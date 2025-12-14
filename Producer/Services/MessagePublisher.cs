@@ -8,9 +8,11 @@ public class MessagePublisher : IMessagePublisher
 {
     public async Task SendMessage(string message)
     {
-        var factory = new ConnectionFactory
+        var factory = new ConnectionFactory()
         {
             HostName = "localhost",
+            UserName = "guest",
+            Password = "guest"
         };
 
         using var connection = await factory.CreateConnectionAsync();
@@ -35,10 +37,6 @@ public class MessagePublisher : IMessagePublisher
         );
 
         Console.WriteLine($"message send: {message}");
-
-
-
-
     }
 
 }
