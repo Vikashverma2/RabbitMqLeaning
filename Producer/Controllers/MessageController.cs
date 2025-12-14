@@ -15,6 +15,14 @@ namespace Producer.Controllers
             _messagePublisher = messagePublisher;
         }
 
-        
+        [HttpPost]
+        public IActionResult Send([FromBody] string message)
+        {
+            _messagePublisher.SendMessage(message);
+            return Ok("Message ssent to RabbitMQ");
+            
+        }
+
+
     }
 }
